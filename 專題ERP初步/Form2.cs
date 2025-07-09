@@ -37,22 +37,23 @@ namespace 專題ERP初步
 				if (dataGridView1.Columns.Contains("TaskDescription"))
 					dataGridView1.Columns["TaskDescription"].HeaderText = "工作內容";
 			}
-			catch (Exception ex)
-			{
-				;
-			}
+			catch (Exception ex){}
 		}
 		#endregion
+
+		public Form2()
+		{
+			InitializeComponent();
+			_userId = Session.UserId;
+			_fullName = Session.FullName;
+			_role = Session.Role;
+		}
 		public Form2(int userId, string? fullName, string? role)
 		{
 			InitializeComponent();
 			_fullName = fullName;
 			_role = role;
 			_userId = userId;
-		}
-
-		public Form2()
-		{
 		}
 
 		// Form2.cs
@@ -75,7 +76,9 @@ namespace 專題ERP初步
 		#region 跳轉區
 		private void 工作排程ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			DataGrid mainForm = new DataGrid(this);
+			mainForm.Show();
+			this.Hide();
 		}
 
 		private void 個人出勤紀錄ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -175,7 +178,7 @@ namespace 專題ERP初步
 				{ 員工資料ToolStripMenuItem1, new List<string> { "Admin" } },
 				{ 員工績效ToolStripMenuItem, new List<string> { "Admin" } },
 				{ 員工進度ToolStripMenuItem, new List<string> { "Admin" } },
-				{ 工作排程ToolStripMenuItem, new List<string> { "Admin", "RD" } },
+				{ 工作排程ToolStripMenuItem, new List<string> { "Admin", "RD", "HR" } },
 				{ 原物料庫存ToolStripMenuItem, new List<string> { "Admin" } },
 				{ 成品庫存ToolStripMenuItem, new List<string> { "Admin" } }
 			};
@@ -195,7 +198,7 @@ namespace 專題ERP初步
 			dataGridView1.ColumnHeadersVisible = false;
 			LoadSchedule();
 			#endregion
-		}
+		}//部門權限
 
 		private void Form2_FormClosed(object sender, FormClosedEventArgs e)
 		{
@@ -267,7 +270,5 @@ namespace 專題ERP初步
 			}
 		}
 	}
-
-
 
 }

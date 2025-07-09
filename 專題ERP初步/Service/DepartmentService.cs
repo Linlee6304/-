@@ -11,6 +11,15 @@ namespace 專題ERP初步.Service
 
 	public class DepartmentService
 	{
-		
+		private readonly DepartmentDao _dao=new DepartmentDao();
+
+		public DepartmentDto GetUserIdForDepartments(int userid)
+		{
+			return _dao.GetUserIdForDepartments(userid);
+		}
+		public List<DepartmentDto> GetAllDepartments()
+		{
+			return _dao.GetAllDepartments();
+		}
 	}
 }

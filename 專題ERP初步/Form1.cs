@@ -42,6 +42,10 @@ namespace 專題ERP初步
 						string fullName = reader["FullName"].ToString();
 						string role = reader["Role"].ToString();
 
+						Session.UserId = userId;
+						Session.FullName = fullName;
+						Session.Role = role;
+
 						Form2 mainForm = new Form2(userId, fullName, role);
 						mainForm.Show();
 						this.Hide();
