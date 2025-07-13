@@ -33,7 +33,7 @@
 			工作排程ToolStripMenuItem = new ToolStripMenuItem();
 			請假申請ToolStripMenuItem = new ToolStripMenuItem();
 			請假申請ToolStripMenuItem1 = new ToolStripMenuItem();
-			請假記錄ToolStripMenuItem = new ToolStripMenuItem();
+			請假核可ToolStripMenuItem = new ToolStripMenuItem();
 			個人出勤紀錄ToolStripMenuItem = new ToolStripMenuItem();
 			資金申請ToolStripMenuItem = new ToolStripMenuItem();
 			一般請款ToolStripMenuItem = new ToolStripMenuItem();
@@ -70,7 +70,7 @@
 			menuStrip1.Items.AddRange(new ToolStripItem[] { 登出ToolStripMenuItem, 工作排程ToolStripMenuItem, 請假申請ToolStripMenuItem, 資金申請ToolStripMenuItem, 庫存狀況ToolStripMenuItem, 人事ToolStripMenuItem, 管理ToolStripMenuItem });
 			menuStrip1.Location = new Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
-			menuStrip1.Size = new Size(611, 27);
+			menuStrip1.Size = new Size(611, 28);
 			menuStrip1.TabIndex = 1;
 			menuStrip1.Text = "menuStrip1";
 			menuStrip1.ItemClicked += menuStrip1_ItemClicked;
@@ -78,42 +78,42 @@
 			// 登出ToolStripMenuItem
 			// 
 			登出ToolStripMenuItem.Name = "登出ToolStripMenuItem";
-			登出ToolStripMenuItem.Size = new Size(53, 23);
+			登出ToolStripMenuItem.Size = new Size(53, 24);
 			登出ToolStripMenuItem.Text = "登出";
 			登出ToolStripMenuItem.Click += 登出ToolStripMenuItem_Click;
 			// 
 			// 工作排程ToolStripMenuItem
 			// 
 			工作排程ToolStripMenuItem.Name = "工作排程ToolStripMenuItem";
-			工作排程ToolStripMenuItem.Size = new Size(83, 23);
+			工作排程ToolStripMenuItem.Size = new Size(83, 24);
 			工作排程ToolStripMenuItem.Text = "工作排程";
 			工作排程ToolStripMenuItem.Click += 工作排程ToolStripMenuItem_Click;
 			// 
 			// 請假申請ToolStripMenuItem
 			// 
-			請假申請ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 請假申請ToolStripMenuItem1, 請假記錄ToolStripMenuItem, 個人出勤紀錄ToolStripMenuItem });
+			請假申請ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 請假申請ToolStripMenuItem1, 請假核可ToolStripMenuItem, 個人出勤紀錄ToolStripMenuItem });
 			請假申請ToolStripMenuItem.Name = "請假申請ToolStripMenuItem";
-			請假申請ToolStripMenuItem.Size = new Size(83, 23);
+			請假申請ToolStripMenuItem.Size = new Size(83, 24);
 			請假申請ToolStripMenuItem.Text = "請假申請";
 			// 
 			// 請假申請ToolStripMenuItem1
 			// 
 			請假申請ToolStripMenuItem1.Name = "請假申請ToolStripMenuItem1";
-			請假申請ToolStripMenuItem1.Size = new Size(182, 26);
+			請假申請ToolStripMenuItem1.Size = new Size(224, 26);
 			請假申請ToolStripMenuItem1.Text = "請假申請";
 			請假申請ToolStripMenuItem1.Click += 請假申請ToolStripMenuItem1_Click;
 			// 
-			// 請假記錄ToolStripMenuItem
+			// 請假核可ToolStripMenuItem
 			// 
-			請假記錄ToolStripMenuItem.Name = "請假記錄ToolStripMenuItem";
-			請假記錄ToolStripMenuItem.Size = new Size(182, 26);
-			請假記錄ToolStripMenuItem.Text = "請假記錄";
-			請假記錄ToolStripMenuItem.Click += 請假記錄ToolStripMenuItem_Click;
+			請假核可ToolStripMenuItem.Name = "請假核可ToolStripMenuItem";
+			請假核可ToolStripMenuItem.Size = new Size(224, 26);
+			請假核可ToolStripMenuItem.Text = "請假核可";
+			請假核可ToolStripMenuItem.Click += 請假記錄ToolStripMenuItem_Click;
 			// 
 			// 個人出勤紀錄ToolStripMenuItem
 			// 
 			個人出勤紀錄ToolStripMenuItem.Name = "個人出勤紀錄ToolStripMenuItem";
-			個人出勤紀錄ToolStripMenuItem.Size = new Size(182, 26);
+			個人出勤紀錄ToolStripMenuItem.Size = new Size(224, 26);
 			個人出勤紀錄ToolStripMenuItem.Text = "個人出勤紀錄";
 			個人出勤紀錄ToolStripMenuItem.Click += 個人出勤紀錄ToolStripMenuItem_Click;
 			// 
@@ -121,7 +121,7 @@
 			// 
 			資金申請ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 一般請款ToolStripMenuItem, 請款紀錄ToolStripMenuItem });
 			資金申請ToolStripMenuItem.Name = "資金申請ToolStripMenuItem";
-			資金申請ToolStripMenuItem.Size = new Size(83, 23);
+			資金申請ToolStripMenuItem.Size = new Size(83, 24);
 			資金申請ToolStripMenuItem.Text = "資金申請";
 			// 
 			// 一般請款ToolStripMenuItem
@@ -142,7 +142,7 @@
 			// 
 			庫存狀況ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 原物料庫存ToolStripMenuItem, 成品庫存ToolStripMenuItem });
 			庫存狀況ToolStripMenuItem.Name = "庫存狀況ToolStripMenuItem";
-			庫存狀況ToolStripMenuItem.Size = new Size(83, 23);
+			庫存狀況ToolStripMenuItem.Size = new Size(83, 24);
 			庫存狀況ToolStripMenuItem.Text = "庫存狀況";
 			// 
 			// 原物料庫存ToolStripMenuItem
@@ -163,7 +163,7 @@
 			// 
 			人事ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 個人資料資料ToolStripMenuItem, 出勤紀錄ToolStripMenuItem });
 			人事ToolStripMenuItem.Name = "人事ToolStripMenuItem";
-			人事ToolStripMenuItem.Size = new Size(53, 23);
+			人事ToolStripMenuItem.Size = new Size(53, 24);
 			人事ToolStripMenuItem.Text = "人事";
 			// 
 			// 個人資料資料ToolStripMenuItem
@@ -184,7 +184,7 @@
 			// 
 			管理ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 客戶ToolStripMenuItem, 員工ToolStripMenuItem, 帳號管理ToolStripMenuItem });
 			管理ToolStripMenuItem.Name = "管理ToolStripMenuItem";
-			管理ToolStripMenuItem.Size = new Size(53, 23);
+			管理ToolStripMenuItem.Size = new Size(53, 24);
 			管理ToolStripMenuItem.Text = "管理";
 			// 
 			// 客戶ToolStripMenuItem
@@ -347,7 +347,7 @@
 		private ToolStripMenuItem 出勤紀錄ToolStripMenuItem;
 		private ToolStripMenuItem 請假申請ToolStripMenuItem;
 		private ToolStripMenuItem 請假申請ToolStripMenuItem1;
-		private ToolStripMenuItem 請假記錄ToolStripMenuItem;
+		private ToolStripMenuItem 請假核可ToolStripMenuItem;
 		private ToolStripMenuItem 個人出勤紀錄ToolStripMenuItem;
 		private ToolStripMenuItem 庫存狀況ToolStripMenuItem;
 		private ToolStripMenuItem 原物料庫存ToolStripMenuItem;

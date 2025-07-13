@@ -83,17 +83,23 @@ namespace 專題ERP初步
 
 		private void 個人出勤紀錄ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			Leave3 mainForm = new Leave3(this);
+			mainForm.Show();
+			this.Hide();
 		}
 
-		private void 請假記錄ToolStripMenuItem_Click(object sender, EventArgs e)
+		private void 請假記錄ToolStripMenuItem_Click(object sender, EventArgs e)//已改為請假核可
 		{
-
+			Leave2 mainForm = new Leave2(this);
+			mainForm.Show();
+			this.Hide();
 		}
 
 		private void 請假申請ToolStripMenuItem1_Click(object sender, EventArgs e)
 		{
-
+			Leave1 mainForm = new Leave1(this);
+			mainForm.Show();
+			this.Hide();
 		}
 
 		private void 一般請款ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -166,7 +172,7 @@ namespace 專題ERP初步
 			_menuRoleMap = new Dictionary<ToolStripMenuItem, List<string>>
 			{
 				{ 請假申請ToolStripMenuItem1, new List<string> { "Admin", "HR", "User" ,"RD"} },
-				{ 請假記錄ToolStripMenuItem, new List<string> { "Admin", "HR", "User", "RD" } },
+				{ 請假核可ToolStripMenuItem, new List<string> { "Admin", "HR" } },
 				{ 個人出勤紀錄ToolStripMenuItem, new List<string> { "Admin", "HR", "User", "RD" } },
 				{ 一般請款ToolStripMenuItem, new List<string> { "Admin", "HR", "User", "RD" } },
 				{ 請款紀錄ToolStripMenuItem, new List<string> { "Admin", "HR", "User", "RD" } },
@@ -192,9 +198,9 @@ namespace 專題ERP初步
 
 			#region 需要研究
 
-
+			dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;//這行配合下面那行可根據命料調整文字欄位高度
+			dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;//配上上面那行
 			dataGridView1.RowHeadersVisible = false;
-
 			dataGridView1.ColumnHeadersVisible = false;
 			LoadSchedule();
 			#endregion

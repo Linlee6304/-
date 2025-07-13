@@ -57,7 +57,8 @@
 			ClientSize = new Size(800, 450);
 			Controls.Add(menuStrip1);
 			Name = "Leave2";
-			Text = "請假記錄";
+			Text = "請假核可";
+			Load += Leave2_Load;
 			menuStrip1.ResumeLayout(false);
 			menuStrip1.PerformLayout();
 			ResumeLayout(false);

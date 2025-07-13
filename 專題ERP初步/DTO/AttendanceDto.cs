@@ -14,5 +14,8 @@ namespace 專題ERP初步.DTO
 		public DateTime? ClockInTime { get; set; }
 		public DateTime? ClockOutTime { get; set; }
 		public bool WorkProgressConfirmed { get; set; }
+
+		public string Status { get; set; }
+		public string Remarks { get; set; }
 	}
 }

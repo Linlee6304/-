@@ -57,22 +57,47 @@ namespace 專題ERP初步.DAO
 
 			}
 		}
-		public void UpdateClockOut(int userId)//插入下班打卡資料
+		public void UpdateClockOutBasic(int userId, DateTime clockOutTime, string remarks)
 		{
 			using (var conn = new SqlConnection(DBHelper.ConnStr))
 			{
 				conn.Open();
-				var sql = @"update Attendance
-							SET ClockOutTime = @ClockOutTime
-							WHERE UserID = @UserID
-							AND AttendanceDate = CAST(GETDATE() AS DATE)
-							AND WorkProgressConfirmed = 1
-							AND ClockOutTime IS NULL";
+				string sql = @"
+			UPDATE Attendance
+			SET ClockOutTime = @ClockOutTime,
+				Remarks = @Remarks
+			WHERE UserID = @UserID
+			  AND AttendanceDate = CAST(GETDATE() AS DATE)
+			  AND WorkProgressConfirmed = 1
+			  AND ClockOutTime IS NULL";
+
 				var cmd = new SqlCommand(sql, conn);
-
-				cmd.Parameters.AddWithValue("@ClockOutTime", DateTime.Now);
+				cmd.Parameters.AddWithValue("@ClockOutTime", clockOutTime);
+				cmd.Parameters.AddWithValue("@Remarks", remarks);
 				cmd.Parameters.AddWithValue("@UserID", userId);
+				cmd.ExecuteNonQuery();
+			}
+		}
+		public void UpdateClockOutWithStatus(int userId, DateTime clockOutTime, string status, string remarks)
+		{
+			using (var conn = new SqlConnection(DBHelper.ConnStr))
+			{
+				conn.Open();
+				string sql = @"
+			UPDATE Attendance
+			SET ClockOutTime = @ClockOutTime,
+				Status = @Status,
+				Remarks = @Remarks
+			WHERE UserID = @UserID
+			  AND AttendanceDate = CAST(GETDATE() AS DATE)
+			  AND WorkProgressConfirmed = 1
+			  AND ClockOutTime IS NULL";
 
+				var cmd = new SqlCommand(sql, conn);
+				cmd.Parameters.AddWithValue("@ClockOutTime", clockOutTime);
+				cmd.Parameters.AddWithValue("@Status", status);
+				cmd.Parameters.AddWithValue("@Remarks", remarks);
+				cmd.Parameters.AddWithValue("@UserID", userId);
 				cmd.ExecuteNonQuery();
 			}
 		}
@@ -182,6 +207,9 @@ namespace 專題ERP初步.DAO
 				return result == null ? "今日無排程" : result.ToString();
 			}
 		}
+
+
+		
 
 	}
 }

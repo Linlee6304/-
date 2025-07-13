@@ -36,8 +36,39 @@ namespace 專題ERP初步.Service
 			if (attendance == null || !attendance.WorkProgressConfirmed)
 				throw new Exception("請先送出今日工作進度再打下班卡！");
 
-			_dao.UpdateClockOut(userId);
+			if (!string.IsNullOrEmpty(attendance.Status))
+			{
+				// 如果已經被請假或其他狀態佔用，只更新 ClockOutTime 和備註
+				string remarks = "自動補打下班卡（已有請假狀態）";
+				_dao.UpdateClockOutBasic(userId, DateTime.Now, remarks);
+			}
+			else
+			{
+				// 系統自動計算遲到、早退或正常
+				DateTime clockOutTime = DateTime.Now;
+				TimeSpan duration = clockOutTime - attendance.ClockInTime.Value;
 
+				string status;
+				string remarks;
+
+				if (attendance.ClockInTime.Value.Hour >= 10)
+				{
+					status = "遲到";
+					remarks = $"本日只來 {(int)duration.TotalMinutes} 分鐘";
+				}
+				else if (duration.TotalMinutes < 540)
+				{
+					status = "早退";
+					remarks = $"工時不足 {540 - (int)duration.TotalMinutes} 分鐘";
+				}
+				else
+				{
+					status = "正常";
+					remarks = "出勤正常";
+				}
+
+				_dao.UpdateClockOutWithStatus(userId, clockOutTime, status, remarks);
+			}
 		}
 		// 更新工作進度
 		public void SubmitWorkProgress(int userId, string note)
