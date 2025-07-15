@@ -43,7 +43,7 @@ namespace 專題ERP初步
 			#region 查詢審核狀況
 
 			var UAService = new UserAccountService();
-			
+
 			try
 			{
 				var Fullname = UAService.GetAllFullname();
@@ -65,6 +65,11 @@ namespace 專題ERP初步
 		}
 
 		private void CBFullName_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void SelectBtu_Click(object sender, EventArgs e)
 		{
 
 		}

@@ -106,6 +106,7 @@
 			SelectBtu.TabIndex = 6;
 			SelectBtu.Text = "查詢/更新";
 			SelectBtu.UseVisualStyleBackColor = true;
+			SelectBtu.Click += SelectBtu_Click;
 			// 
 			// button2
 			// 
