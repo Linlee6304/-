@@ -104,8 +104,9 @@
 			// 
 			// LeaveMode
 			// 
+			LeaveMode.DropDownStyle = ComboBoxStyle.DropDownList;
 			LeaveMode.FormattingEnabled = true;
-			LeaveMode.Location = new Point(550, 98);
+			LeaveMode.Location = new Point(560, 60);
 			LeaveMode.Name = "LeaveMode";
 			LeaveMode.Size = new Size(151, 27);
 			LeaveMode.TabIndex = 6;
@@ -114,7 +115,7 @@
 			// label3
 			// 
 			label3.AutoSize = true;
-			label3.Location = new Point(584, 76);
+			label3.Location = new Point(594, 38);
 			label3.Name = "label3";
 			label3.Size = new Size(69, 19);
 			label3.TabIndex = 7;
@@ -124,7 +125,7 @@
 			// 
 			radioLeave1.AutoSize = true;
 			radioLeave1.Checked = true;
-			radioLeave1.Location = new Point(707, 89);
+			radioLeave1.Location = new Point(717, 51);
 			radioLeave1.Name = "radioLeave1";
 			radioLeave1.Size = new Size(60, 23);
 			radioLeave1.TabIndex = 8;
@@ -136,7 +137,7 @@
 			// radioLeave2
 			// 
 			radioLeave2.AutoSize = true;
-			radioLeave2.Location = new Point(707, 118);
+			radioLeave2.Location = new Point(717, 80);
 			radioLeave2.Name = "radioLeave2";
 			radioLeave2.Size = new Size(60, 23);
 			radioLeave2.TabIndex = 9;
@@ -146,7 +147,7 @@
 			// 
 			// btuInsert
 			// 
-			btuInsert.Location = new Point(88, 409);
+			btuInsert.Location = new Point(594, 129);
 			btuInsert.Name = "btuInsert";
 			btuInsert.Size = new Size(94, 29);
 			btuInsert.TabIndex = 10;
@@ -176,7 +177,7 @@
 			// 
 			// textBox1
 			// 
-			textBox1.Location = new Point(20, 242);
+			textBox1.Location = new Point(28, 50);
 			textBox1.Multiline = true;
 			textBox1.Name = "textBox1";
 			textBox1.Size = new Size(233, 161);
@@ -186,7 +187,7 @@
 			// label4
 			// 
 			label4.AutoSize = true;
-			label4.Location = new Point(25, 220);
+			label4.Location = new Point(33, 28);
 			label4.Name = "label4";
 			label4.Size = new Size(228, 19);
 			label4.TabIndex = 14;
@@ -194,7 +195,7 @@
 			// 
 			// btutopictureBox1
 			// 
-			btutopictureBox1.Location = new Point(78, 188);
+			btutopictureBox1.Location = new Point(73, 409);
 			btutopictureBox1.Name = "btutopictureBox1";
 			btutopictureBox1.Size = new Size(94, 29);
 			btutopictureBox1.TabIndex = 15;
@@ -208,7 +209,7 @@
 			// 
 			// pictureBox1
 			// 
-			pictureBox1.Location = new Point(33, 38);
+			pictureBox1.Location = new Point(28, 259);
 			pictureBox1.Name = "pictureBox1";
 			pictureBox1.Size = new Size(195, 144);
 			pictureBox1.TabIndex = 16;

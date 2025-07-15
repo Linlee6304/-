@@ -42,6 +42,8 @@ namespace 專題ERP初步
 
 		private void Leave1_Load(object sender, EventArgs e)
 		{
+
+			dataGridView1.ReadOnly = true;
 			var LeaveService = new LeaveTypeService();
 
 			try

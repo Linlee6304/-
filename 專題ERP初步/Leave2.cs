@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using 專題ERP初步.Service;
 
 namespace 專題ERP初步
 {
@@ -32,6 +33,38 @@ namespace 專題ERP初步
 		}
 
 		private void Leave2_Load(object sender, EventArgs e)
+		{
+			#region 審核選項加入在CBReviewStatus
+			CBReviewStatus.Items.Add("申請中");
+			CBReviewStatus.Items.Add("審核通過");
+			CBReviewStatus.Items.Add("審核失敗");
+			#endregion
+
+			#region 查詢審核狀況
+
+			var UAService = new UserAccountService();
+			
+			try
+			{
+				var Fullname = UAService.GetAllFullname();
+				CBFullName.DataSource = Fullname;
+				CBFullName.DisplayMember = "FullName";
+				CBFullName.DropDownWidth = 400;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("載入失敗：" + ex.Message);
+			}
+			#endregion
+
+		}
+
+		private void CBReviewStatus_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void CBFullName_SelectedIndexChanged(object sender, EventArgs e)
 		{
 
 		}
