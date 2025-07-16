@@ -13,7 +13,7 @@ namespace 專題ERP初步.Service
 	{
 		private readonly DepartmentDao _dao=new DepartmentDao();
 
-		public DepartmentDto GetUserIdForDepartments(int userid)
+		public List<DepartmentDto> GetUserIdForDepartments(int userid)
 		{
 			return _dao.GetUserIdForDepartments(userid);
 		}

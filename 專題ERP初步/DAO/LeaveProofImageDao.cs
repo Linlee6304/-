@@ -12,21 +12,19 @@ namespace 專題ERP初步.DAO
 	{
 		public void InsertProofImage(LeaveProofImageDto dto)
 		{
-			using (var conn = new SqlConnection(DBHelper.ConnStr))
-			{
-				conn.Open();
-				string sql = @"INSERT INTO LeaveProofImage(ApplicationID, ImagePath, FileName, UploadedTime)
-                           VALUES (@ApplicationID, @ImagePath, @FileName, @UploadedTime)";
-				using (var cmd = new SqlCommand(sql, conn))
-				{
-					cmd.Parameters.AddWithValue("@ApplicationID", dto.ApplicationID);
-					cmd.Parameters.AddWithValue("@ImagePath", dto.ImagePath);
-					cmd.Parameters.AddWithValue("@FileName", (object?)dto.FileName ?? DBNull.Value);
-					cmd.Parameters.AddWithValue("@UploadedTime", (object?)dto.UploadedTime ?? DBNull.Value);
 
-					cmd.ExecuteNonQuery();
-				}
-			}
+			string sql = @"INSERT INTO LeaveProofImage(ApplicationID, ImagePath, FileName, UploadedTime)
+                           VALUES (@ApplicationID, @ImagePath, @FileName, @UploadedTime)";
+			var parameters = new[] {
+				new SqlParameter("@ApplicationID", dto.ApplicationID),
+			new SqlParameter("@ImagePath", dto.ImagePath),
+			new SqlParameter("@FileName", (object?)dto.FileName ?? DBNull.Value),
+			new SqlParameter("@UploadedTime", (object?)dto.UploadedTime ?? DBNull.Value)
+			};
+
+		DBHelper.ExecuteNonQuery(sql, parameters);
 		}
+			
+		
 	}
 }

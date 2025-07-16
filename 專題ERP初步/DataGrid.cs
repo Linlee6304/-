@@ -52,9 +52,9 @@ namespace 專題ERP初步
 				try
 				{
 					var Deptname = service.GetUserIdForDepartments(_userId);
-					if (Deptname != null)
+					if (Deptname != null&& Deptname.Count > 0)
 					{
-						部門.DataSource = new List<DepartmentDto> { Deptname };
+						部門.DataSource = Deptname;
 						部門.DisplayMember = "DepartmentName";
 					}
 

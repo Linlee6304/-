@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Data.SqlClient;
 using 專題ERP初步.DTO;
 
 namespace 專題ERP初步.DAO
@@ -12,19 +14,21 @@ namespace 專題ERP初步.DAO
 	{
 		public int? GetDepartmentIdByUserId(int userId)//透過userid查詢部門編號
 		{
-			using (var conn = new SqlConnection(DBHelper.ConnStr))
+
+			var sql = @"SELECT DepartmentID FROM EmployeeProfile WHERE UserID = @userId";
+			var Parameters = new[]
 			{
-				conn.Open();
-				var sql = @"SELECT DepartmentID FROM EmployeeProfile WHERE UserID = @userId";
+				new SqlParameter("@userId", userId)
+			};
+			object result = DBHelper.ExecuteScalar(sql, Parameters);
 
-				using (var cmd = new SqlCommand(sql, conn))
-				{
-					cmd.Parameters.AddWithValue("@userId", userId);
+			// 處理資料不存在的情況
+			if (result == null || result == DBNull.Value)
+				return null;
 
-					var result = cmd.ExecuteScalar();
-					return result == null ? (int?)null : Convert.ToInt32(result);
-				}
-			}
+			return Convert.ToInt32(result);
 		}
+			
 	}
 }
+

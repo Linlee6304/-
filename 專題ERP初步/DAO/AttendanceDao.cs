@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,204 +13,183 @@ namespace 專題ERP初步.DAO
 	{
 		public bool HasClockInToday(int userId)//確認是否打過卡
 		{
-			using (var conn = new SqlConnection(DBHelper.ConnStr))
-			{
-				conn.Open();
+
 				var sql = @"SELECT COUNT(*) FROM Attendance 
 							WHERE UserID = @UserID AND AttendanceDate = CAST(GETDATE() AS DATE) 
 							AND ClockInTime IS NOT NULL";
-				SqlCommand cmd = new SqlCommand(sql, conn);
-				cmd.Parameters.AddWithValue("@UserID", userId);
-				return (int)cmd.ExecuteScalar() > 0;
-			}
+				var param = new SqlParameter();
+				object result =DBHelper.ExecuteScalar(sql, param);
+				return Convert.ToInt32(result) > 0;
+		
 		}
 
 		public bool HasClockOutToday(int userId)//確認下班是否已打卡並回傳
 		{
-			using (var conn = new SqlConnection(DBHelper.ConnStr))
-			{
-				conn.Open();
-				var sql = @"SELECT COUNT(*) FROM Attendance 
-							WHERE UserID = @UserID AND 
-							AttendanceDate = CAST(GETDATE() AS DATE) 
-							AND ClockOutTime IS NOT NULL";
-				SqlCommand cmd = new SqlCommand(sql, conn);
-				cmd.Parameters.AddWithValue("@UserID", userId);
 
-				return (int)cmd.ExecuteScalar() > 0;
-			}
+			var sql = @"SELECT COUNT(*) FROM Attendance 
+						WHERE UserID = @UserID AND 
+						AttendanceDate = CAST(GETDATE() AS DATE) 
+						AND ClockOutTime IS NOT NULL";
+			var param =new SqlParameter();
+			object result =DBHelper.ExecuteScalar(sql, param);
+
+			return Convert.ToInt32(result) > 0;
+			
 		}
 
 		public void InsertClockIn(int userId)//插入上班打卡資料
 		{
-			using (var conn = new SqlConnection(DBHelper.ConnStr))
-			{
-				conn.Open();
-				var sql = @"insert into Attendance(UserID,AttendanceDate,ClockInTime, WorkProgressConfirmed)
+
+			var sql = @"insert into Attendance(UserID,AttendanceDate,ClockInTime, WorkProgressConfirmed)
 							values (@userid,@AttendanceDate,@ClockInTime, 0) ";
-				var cmd = new SqlCommand(sql, conn);
+			var parameters = new[]
+			{
+				new SqlParameter("@UserID", userId),
+				new SqlParameter("@AttendanceDate", DateTime.Today),
+				new SqlParameter("@ClockInTime", DateTime.Now),
+			};
+			DBHelper.ExecuteNonQuery(sql, parameters);
 
-				cmd.Parameters.AddWithValue("@UserID", userId);
-				cmd.Parameters.AddWithValue("@AttendanceDate", DateTime.Today); // 今天的日期
-				cmd.Parameters.AddWithValue("@ClockInTime", DateTime.Now);      // 現在時間作為打卡時間
 
-				cmd.ExecuteNonQuery();
-
-			}
 		}
 		public void UpdateClockOutBasic(int userId, DateTime clockOutTime, string remarks)
 		{
-			using (var conn = new SqlConnection(DBHelper.ConnStr))
-			{
-				conn.Open();
-				string sql = @"
-			UPDATE Attendance
-			SET ClockOutTime = @ClockOutTime,
-				Remarks = @Remarks
-			WHERE UserID = @UserID
-			  AND AttendanceDate = CAST(GETDATE() AS DATE)
-			  AND WorkProgressConfirmed = 1
-			  AND ClockOutTime IS NULL";
 
-				var cmd = new SqlCommand(sql, conn);
-				cmd.Parameters.AddWithValue("@ClockOutTime", clockOutTime);
-				cmd.Parameters.AddWithValue("@Remarks", remarks);
-				cmd.Parameters.AddWithValue("@UserID", userId);
-				cmd.ExecuteNonQuery();
-			}
+			string sql = @"UPDATE Attendance
+			SET ClockOutTime = @ClockOutTime,
+			Remarks = @Remarks
+			WHERE UserID = @UserID
+			 AND AttendanceDate = CAST(GETDATE() AS DATE)
+			 AND WorkProgressConfirmed = 1
+			 AND ClockOutTime IS NULL";
+			var parameters = new[]
+			{
+				new SqlParameter("@ClockOutTime", clockOutTime),
+				new SqlParameter("@Remarks", remarks),
+				new SqlParameter("@UserID", userId)
+			};
+			DBHelper.ExecuteQuery(sql, parameters);
+
+			
 		}
 		public void UpdateClockOutWithStatus(int userId, DateTime clockOutTime, string status, string remarks)
 		{
-			using (var conn = new SqlConnection(DBHelper.ConnStr))
-			{
-				conn.Open();
 				string sql = @"
-			UPDATE Attendance
-			SET ClockOutTime = @ClockOutTime,
+				UPDATE Attendance
+				SET ClockOutTime = @ClockOutTime,
 				Status = @Status,
 				Remarks = @Remarks
-			WHERE UserID = @UserID
-			  AND AttendanceDate = CAST(GETDATE() AS DATE)
-			  AND WorkProgressConfirmed = 1
-			  AND ClockOutTime IS NULL";
+				WHERE UserID = @UserID
+				AND AttendanceDate = CAST(GETDATE() AS DATE)
+				AND WorkProgressConfirmed = 1
+				AND ClockOutTime IS NULL";
 
-				var cmd = new SqlCommand(sql, conn);
-				cmd.Parameters.AddWithValue("@ClockOutTime", clockOutTime);
-				cmd.Parameters.AddWithValue("@Status", status);
-				cmd.Parameters.AddWithValue("@Remarks", remarks);
-				cmd.Parameters.AddWithValue("@UserID", userId);
-				cmd.ExecuteNonQuery();
-			}
+			var parameters = new[]
+			{
+					new SqlParameter("@ClockOutTime", clockOutTime),
+					new SqlParameter("@Status", status),
+					new SqlParameter("@Remarks", remarks),
+					new SqlParameter("@UserID", userId)
+			};
+				DBHelper.ExecuteQuery(sql, parameters);
+			
 		}
 		public void UpdateWorkProgressNote(int userId, string note)
 		{
-			using (var conn = new SqlConnection(DBHelper.ConnStr))
+
+			var sql = @"UPDATE Attendance
+						SET WorkProgressNote = @Note, 
+						WorkProgressConfirmed = 1
+						WHERE UserID = @UserID
+						AND AttendanceDate = CAST(GETDATE() AS DATE)";
+
+			var parameters = new[]
 			{
-				conn.Open();
-
-				var sql = @"UPDATE Attendance
-							SET WorkProgressNote = @Note, 
-							WorkProgressConfirmed = 1
-							WHERE UserID = @UserID
-							AND AttendanceDate = CAST(GETDATE() AS DATE)";
-
-				var cmd = new SqlCommand(sql, conn);
-
-				// 加入參數
-				cmd.Parameters.AddWithValue("@Note", note);
-				cmd.Parameters.AddWithValue("@UserID", userId);
-
-				cmd.ExecuteNonQuery();
-			}
+					new SqlParameter("@Note", note),
+					new SqlParameter("@UserID", userId)
+			};
+			DBHelper.ExecuteQuery(sql,parameters);
+			
 		}
-		public AttendanceDto GetTodayAttendance(int userId)
+		public AttendanceDto? GetTodayAttendance(int userId)
 		{
-			using (var conn = new SqlConnection(DBHelper.ConnStr))
-			{
-				conn.Open();
-				var sql = @"SELECT AttendanceID, UserID, AttendanceDate, ClockInTime, ClockOutTime, WorkProgressConfirmed
+
+			var sql = @"SELECT AttendanceID, UserID, AttendanceDate, ClockInTime, ClockOutTime, WorkProgressConfirmed
                             FROM Attendance
                             WHERE UserID = @UserID AND AttendanceDate = CAST(GETDATE() AS DATE)";
-				var cmd = new SqlCommand(sql, conn);
-				cmd.Parameters.AddWithValue("@UserID", userId);
+			var param = new SqlParameter("@UserID", userId);
 
-				using (var reader = cmd.ExecuteReader())
-				{
-					if (reader.Read())
-					{
-						return new AttendanceDto
-						{
-							AttendanceID = (int)reader["AttendanceID"],
-							UserID = (int)reader["UserID"],
-							AttendanceDate = (DateTime)reader["AttendanceDate"],
-							ClockInTime = reader["ClockInTime"] == DBNull.Value ? (DateTime?)null : (DateTime)reader["ClockInTime"],
-							ClockOutTime = reader["ClockOutTime"] == DBNull.Value ? (DateTime?)null : (DateTime)reader["ClockOutTime"],
-							WorkProgressConfirmed = (bool)reader["WorkProgressConfirmed"]
-						};
-					}
-				}
-			}
-			return null;
+			DataTable dt =DBHelper.ExecuteQuery(sql, param);
+			if (dt.Rows.Count == 0)
+				return null;
+
+			DataRow row = dt.Rows[0];
+			return new AttendanceDto
+			{
+				AttendanceID = Convert.ToInt32(row["AttendanceID"]),
+				UserID = Convert.ToInt32(row["UserID"]),
+				AttendanceDate = Convert.ToDateTime(row["AttendanceDate"]),
+				ClockInTime = row["ClockInTime"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["ClockInTime"]),
+				ClockOutTime = row["ClockOutTime"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["ClockOutTime"]),
+				WorkProgressConfirmed = Convert.ToBoolean(row["WorkProgressConfirmed"])
+			};
+
 		}
 
 		//查詢個人出勤紀錄
 		public List<AttendanceDto> GetAttendanceByDateRange(int userId, DateTime startDate, DateTime endDate)
 		{
 			var list = new List<AttendanceDto>();
-			using (var conn = new SqlConnection(DBHelper.ConnStr))
-			{
-				conn.Open();
-				var sql = @"SELECT AttendanceID, UserID, AttendanceDate, ClockInTime, ClockOutTime, WorkProgressConfirmed
+
+			var sql = @"SELECT AttendanceID, UserID, AttendanceDate, ClockInTime, ClockOutTime, WorkProgressConfirmed
                     FROM Attendance
                     WHERE UserID = @UserID 
                     AND AttendanceDate BETWEEN @StartDate AND @EndDate
                     ORDER BY AttendanceDate";
 
-				var cmd = new SqlCommand(sql, conn);
-				cmd.Parameters.AddWithValue("@UserID", userId);
-				cmd.Parameters.AddWithValue("@StartDate", startDate);
-				cmd.Parameters.AddWithValue("@EndDate", endDate);
+			var parameters = new[]
+			{
+				new SqlParameter("@UserID", userId),
+				new SqlParameter("@StartDate", startDate),
+				new SqlParameter("@EndDate", endDate),
+			};
 
-				using (var reader = cmd.ExecuteReader())
+
+			DataTable dt = DBHelper.ExecuteQuery(sql, parameters);
+
+			foreach (DataRow row in dt.Rows)
+			{
+				list.Add(new AttendanceDto
 				{
-					while (reader.Read())
-					{
-						list.Add(new AttendanceDto
-						{
-							AttendanceID = (int)reader["AttendanceID"],
-							UserID = (int)reader["UserID"],
-							AttendanceDate = (DateTime)reader["AttendanceDate"],
-							ClockInTime = reader["ClockInTime"] == DBNull.Value ? (DateTime?)null : (DateTime)reader["ClockInTime"],
-							ClockOutTime = reader["ClockOutTime"] == DBNull.Value ? (DateTime?)null : (DateTime)reader["ClockOutTime"],
-							WorkProgressConfirmed = (bool)reader["WorkProgressConfirmed"]
-						});
-					}
-				}
+					AttendanceID = Convert.ToInt32(row["AttendanceID"]),
+					UserID = Convert.ToInt32(row["UserID"]),
+					AttendanceDate = Convert.ToDateTime(row["AttendanceDate"]),
+					ClockInTime = row["ClockInTime"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["ClockInTime"]),
+					ClockOutTime = row["ClockOutTime"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["ClockOutTime"]),
+					WorkProgressConfirmed = Convert.ToBoolean(row["WorkProgressConfirmed"])
+				});
 			}
 			return list;
 		}
 
 		public string GetTodayTaskDescription(int userId)
 		{
-			using (var conn = new SqlConnection(DBHelper.ConnStr))
-			{
-				conn.Open();
-				var sql = @"SELECT TOP 1 TaskDescription 
-                    FROM Schedule 
-                    WHERE DepartmentID = (SELECT DepartmentID FROM EmployeeProfile WHERE UserID = @UserID)
-                      AND WeekStartDate <= CAST(GETDATE() AS DATE)
-                    ORDER BY WeekStartDate DESC";
+			string sql = @"SELECT TOP 1 TaskDescription 
+				   FROM Schedule 
+				   WHERE DepartmentID = (
+					   SELECT DepartmentID FROM EmployeeProfile WHERE UserID = @UserID
+				   )
+				   AND WeekStartDate <= CAST(GETDATE() AS DATE)
+				   ORDER BY WeekStartDate DESC";
 
-				var cmd = new SqlCommand(sql, conn);
-				cmd.Parameters.AddWithValue("@UserID", userId);
+			var parameter = new SqlParameter("@UserID", userId);
 
-				var result = cmd.ExecuteScalar();
-				return result == null ? "今日無排程" : result.ToString();
-			}
+			object result = DBHelper.ExecuteScalar(sql, parameter);
+
+			return result == null || result == DBNull.Value
+				? "今日無排程"
+				: result.ToString();
 		}
-
-
-		
 
 	}
 }
