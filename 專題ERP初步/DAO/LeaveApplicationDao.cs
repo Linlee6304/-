@@ -59,5 +59,27 @@ namespace 專題ERP初步.DAO//請假申請邏輯
 			}
 			return list;
 		}
+		public DataTable GetLeaveApply(int userid)//根據使用者名子取得請假一覽
+		{
+			var sql = @"select  L.ApplicationID,U.FullName,T.LeaveTypeName,L.Status,CONVERT(varchar(10), L.CreatedTime, 23) AS CreatedDate,L.StartDate,L.EndDate
+						from LeaveApplication L join UserAccount U
+						ON L.UserID=U.UserID
+						JOIN LeaveType T
+						ON T.LeaveTypeID = L.LeaveTypeID
+						WHERE L.USERID=@userid";
+			var param = new SqlParameter("userid", userid);
+			return DBHelper.ExecuteQuery(sql, param);
+		}
+		public DataTable GetStatusByLeaveApply(string Status)//根據申請狀況取得請假一覽
+		{
+			var sql = @"select  L.ApplicationID,U.FullName,T.LeaveTypeName,L.Status,CONVERT(varchar(10), L.CreatedTime, 23) AS CreatedDate,L.StartDate,L.EndDate
+						from LeaveApplication L join UserAccount U
+						ON L.UserID=U.UserID
+						JOIN LeaveType T
+						ON T.LeaveTypeID = L.LeaveTypeID
+						WHERE L.Status=@Status";
+			var param = new SqlParameter("Status", Status);
+			return DBHelper.ExecuteQuery(sql, param);
+		}
 	}
 }

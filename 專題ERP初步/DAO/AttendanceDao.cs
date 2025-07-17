@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Data.SqlClient;
 using 專題ERP初步.DTO;
 
 namespace 專題ERP初步.DAO
@@ -17,7 +18,7 @@ namespace 專題ERP初步.DAO
 				var sql = @"SELECT COUNT(*) FROM Attendance 
 							WHERE UserID = @UserID AND AttendanceDate = CAST(GETDATE() AS DATE) 
 							AND ClockInTime IS NOT NULL";
-				var param = new SqlParameter();
+				var param = new SqlParameter("@UserID", userId);
 				object result =DBHelper.ExecuteScalar(sql, param);
 				return Convert.ToInt32(result) > 0;
 		
@@ -30,7 +31,7 @@ namespace 專題ERP初步.DAO
 						WHERE UserID = @UserID AND 
 						AttendanceDate = CAST(GETDATE() AS DATE) 
 						AND ClockOutTime IS NOT NULL";
-			var param =new SqlParameter();
+			var param =new SqlParameter("@UserID", userId);
 			object result =DBHelper.ExecuteScalar(sql, param);
 
 			return Convert.ToInt32(result) > 0;
@@ -49,8 +50,6 @@ namespace 專題ERP初步.DAO
 				new SqlParameter("@ClockInTime", DateTime.Now),
 			};
 			DBHelper.ExecuteNonQuery(sql, parameters);
-
-
 		}
 		public void UpdateClockOutBasic(int userId, DateTime clockOutTime, string remarks)
 		{
@@ -190,6 +189,22 @@ namespace 專題ERP初步.DAO
 				? "今日無排程"
 				: result.ToString();
 		}
+
+		public void InsertLeaveAttendance(int userId, DateTime leaveDate, DateTime ClockInTime, string leaveType, bool isHalfDay)//請假輸入用
+		{
+			var sql = @"INSERT INTO Attendance (UserID, AttendanceDate, ClockInTime, Status, sHalfDay)
+						VALUES (@UserID, @LeaveDate, @ClockInTime, @LeaveType, @IsHalfDay)";
+			var parameters = new[]
+			{
+				new SqlParameter("@UserID",userId),
+				new SqlParameter("@LeaveDate",leaveDate),
+				new SqlParameter("@ClockInTime",ClockInTime),
+				new SqlParameter("@LeaveType",leaveType),
+				new SqlParameter("@IsHalfDay",isHalfDay)
+			};
+			DBHelper.ExecuteNonQuery(sql, parameters);
+		}
+
 
 	}
 }

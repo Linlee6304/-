@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,17 @@ namespace 專題ERP初步.Service
 		public List<LeaveApplicationDto> GetLeaveApplications(int userId)
 		{
 			return _dao.GetLeaveApplications(userId);
+		}
+		// 根據 UserID 查詢請假紀錄
+		public DataTable GetLeaveByUserId(int userId)
+		{
+			return _dao.GetLeaveApply(userId);
+		}
+
+		// 根據請假狀態查詢請假紀錄
+		public DataTable GetLeaveByStatus(string status)
+		{
+			return _dao.GetStatusByLeaveApply(status);
 		}
 	}
 }

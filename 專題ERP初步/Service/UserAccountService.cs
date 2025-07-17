@@ -15,5 +15,9 @@ namespace 專題ERP初步.Service
 		{
 			return _dao.GetFullName();
 		}
+		public int? GetUseridByFullname(string FullName)
+		{
+			return _dao.GetFullNameToUserid(FullName);
+		}
 	}
 }

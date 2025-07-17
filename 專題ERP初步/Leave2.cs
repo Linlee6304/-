@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using 專題ERP初步.Service;
 
 namespace 專題ERP初步
@@ -70,6 +71,29 @@ namespace 專題ERP初步
 		}
 
 		private void SelectBtu_Click(object sender, EventArgs e)
+		{
+
+
+		}
+
+		private void splitContainer1_Panel2_DragDrop(object sender, DragEventArgs e)
+		{
+
+		}
+
+		private void SelectBtu_Click_1(object sender, EventArgs e)
+		{
+			//string Fullname= CBFullName.Text;
+			string ReviewStatus = CBReviewStatus.Text;
+			//var UserAccountservice = new UserAccountService();
+			//int? workerid = UserAccountservice.GetUseridByFullname(Fullname);
+
+			var LeaveApplicationservice = new LeaveApplicationService();
+			dataGridView1.DataSource = LeaveApplicationservice.GetLeaveByStatus(ReviewStatus);
+
+		}
+
+		private void CBReviewStatus_SelectedIndexChanged_1(object sender, EventArgs e)
 		{
 
 		}

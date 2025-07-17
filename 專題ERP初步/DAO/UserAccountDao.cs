@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +12,7 @@ namespace 專題ERP初步.DAO
 {
 	public class UserAccountDao
 	{
-		public List<UserAccountDto> GetFullName()
+		public List<UserAccountDto> GetFullName()//讀取所有員工姓名
 		{
 
 			var list = new List<UserAccountDto>();
@@ -27,6 +28,14 @@ namespace 專題ERP初步.DAO
 				});
 			}
 			return list;
+		}
+		public int? GetFullNameToUserid(string FullName) //依照輸入的FullName取得id
+		{
+			var sql = @"select userid from UserAccount where FullName = @FullName";
+			var param =new SqlParameter("FullName", FullName);
+			object result = DBHelper.ExecuteScalar(sql, param);
+			return Convert.ToInt32(result);
+
 		}
 	}
 }
