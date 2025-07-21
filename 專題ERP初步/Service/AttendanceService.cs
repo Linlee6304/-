@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -115,8 +116,15 @@ namespace 專題ERP初步.Service
 			return _dao.GetAttendanceByDateRange(userId, startDate, endDate);
 		}
 
+		public AttendanceDto? GetLeaveAttendance(int userId, DateTime date)//查詢指定日
+		{
+			return _dao.GetLeaveAttendance(userId, date);
+		}
 
 
-
+		public DataTable GetAttendanceByFullNameAndDateRange(string fullName, DateTime startDate, DateTime endDate)
+		{
+			return _dao.GetAttendanceByFullNameAndDateRange(fullName, startDate, endDate);
+		}
 	}
 }

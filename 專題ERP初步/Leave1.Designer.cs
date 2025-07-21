@@ -46,6 +46,7 @@
 			btutopictureBox1 = new Button();
 			openFileDialog1 = new OpenFileDialog();
 			pictureBox1 = new PictureBox();
+			radioLeave3 = new RadioButton();
 			menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -57,7 +58,7 @@
 			menuStrip1.Items.AddRange(new ToolStripItem[] { 返回首頁ToolStripMenuItem });
 			menuStrip1.Location = new Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
-			menuStrip1.Size = new Size(800, 27);
+			menuStrip1.Size = new Size(836, 27);
 			menuStrip1.TabIndex = 1;
 			menuStrip1.Text = "menuStrip1";
 			// 
@@ -139,9 +140,9 @@
 			radioLeave2.AutoSize = true;
 			radioLeave2.Location = new Point(717, 80);
 			radioLeave2.Name = "radioLeave2";
-			radioLeave2.Size = new Size(60, 23);
+			radioLeave2.Size = new Size(90, 23);
 			radioLeave2.TabIndex = 9;
-			radioLeave2.Text = "半天";
+			radioLeave2.Text = "上午半天";
 			radioLeave2.UseVisualStyleBackColor = true;
 			radioLeave2.CheckedChanged += radioLeave2_CheckedChanged;
 			// 
@@ -216,11 +217,23 @@
 			pictureBox1.TabStop = false;
 			pictureBox1.Click += pictureBox1_Click;
 			// 
+			// radioLeave3
+			// 
+			radioLeave3.AutoSize = true;
+			radioLeave3.Location = new Point(717, 109);
+			radioLeave3.Name = "radioLeave3";
+			radioLeave3.Size = new Size(90, 23);
+			radioLeave3.TabIndex = 17;
+			radioLeave3.Text = "下午半天";
+			radioLeave3.UseVisualStyleBackColor = true;
+			radioLeave3.CheckedChanged += radioLeave3_CheckedChanged;
+			// 
 			// Leave1
 			// 
 			AutoScaleDimensions = new SizeF(9F, 19F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(800, 450);
+			ClientSize = new Size(836, 450);
+			Controls.Add(radioLeave3);
 			Controls.Add(pictureBox1);
 			Controls.Add(btutopictureBox1);
 			Controls.Add(label4);
@@ -268,5 +281,6 @@
 		private Button btutopictureBox1;
 		private OpenFileDialog openFileDialog1;
 		private PictureBox pictureBox1;
+		private RadioButton radioLeave3;
 	}
 }

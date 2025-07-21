@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using 專題ERP初步.DTO;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace 專題ERP初步.DAO
 {
@@ -21,7 +22,6 @@ namespace 專題ERP初步.DAO
 				var param = new SqlParameter("@UserID", userId);
 				object result =DBHelper.ExecuteScalar(sql, param);
 				return Convert.ToInt32(result) > 0;
-		
 		}
 
 		public bool HasClockOutToday(int userId)//確認下班是否已打卡並回傳
@@ -171,7 +171,7 @@ namespace 專題ERP初步.DAO
 			return list;
 		}
 
-		public string GetTodayTaskDescription(int userId)
+		public string? GetTodayTaskDescription(int userId)
 		{
 			string sql = @"SELECT TOP 1 TaskDescription 
 				   FROM Schedule 
@@ -190,7 +190,7 @@ namespace 專題ERP初步.DAO
 				: result.ToString();
 		}
 
-		public void InsertLeaveAttendance(int userId, DateTime leaveDate, DateTime ClockInTime, string leaveType, bool isHalfDay)//請假輸入用
+		public void InsertLeaveAttendance(int userId, DateTime leaveDate, DateTime ClockInTime, string leaveType, bool? isHalfDay)//請假輸入用
 		{
 			var sql = @"INSERT INTO Attendance (UserID, AttendanceDate, ClockInTime, Status, sHalfDay)
 						VALUES (@UserID, @LeaveDate, @ClockInTime, @LeaveType, @IsHalfDay)";
@@ -204,6 +204,78 @@ namespace 專題ERP初步.DAO
 			};
 			DBHelper.ExecuteNonQuery(sql, parameters);
 		}
+
+		public AttendanceDto? GetLeaveAttendance(int userId,DateTime date)//只得指定日出勤資訊
+		{
+
+			var sql = @"SELECT AttendanceID, UserID, AttendanceDate, ClockInTime, ClockOutTime, WorkProgressConfirmed
+                            FROM Attendance
+                            WHERE UserID = @UserID AND AttendanceDate = @date";
+			var parameters = new[]
+			{
+				 new SqlParameter("@UserID", userId),
+				 new SqlParameter("@date", date)
+			};
+
+			DataTable dt = DBHelper.ExecuteQuery(sql, parameters);
+			if (dt.Rows.Count == 0)
+				return null;
+
+			DataRow row = dt.Rows[0];
+			return new AttendanceDto
+			{
+				AttendanceID = Convert.ToInt32(row["AttendanceID"]),
+				UserID = Convert.ToInt32(row["UserID"]),
+				AttendanceDate = Convert.ToDateTime(row["AttendanceDate"]),
+				ClockInTime = row["ClockInTime"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["ClockInTime"]),
+				ClockOutTime = row["ClockOutTime"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["ClockOutTime"]),
+				WorkProgressConfirmed = row["WorkProgressConfirmed"] == DBNull.Value
+					? false
+					: Convert.ToBoolean(row["WorkProgressConfirmed"]),
+			};
+
+		}
+		public void UpdateLeaveAttendance(int attendanceId, DateTime? clockInTime, string LeaveTypeName, bool? isHalfDay)
+		{
+			var sql = @"UPDATE Attendance 
+						SET Status = @LeaveTypeName,
+							ClockInTime = @ClockInTime,  
+							sHalfDay = @IsHalfDay
+						WHERE AttendanceID = @AttendanceID";
+
+			var parameters = new List<SqlParameter>
+				{
+					new SqlParameter("@LeaveTypeName", LeaveTypeName),
+					new SqlParameter("@AttendanceID", attendanceId),
+					new SqlParameter("@ClockInTime", clockInTime),
+					new SqlParameter("@IsHalfDay", isHalfDay.Value)
+				};
+
+
+
+			DBHelper.ExecuteNonQuery(sql, parameters.ToArray());
+		}
+
+		public DataTable GetAttendanceByFullNameAndDateRange(string fullName, DateTime startDate, DateTime endDate)//根據起始日終結日查詢此人出勤狀況
+		{
+			string sql = @"
+        SELECT A.AttendanceDate, A.ClockInTime, A.ClockOutTime, A.Status, A.sHalfDay
+        FROM Attendance A
+        JOIN UserAccount U ON A.UserID = U.UserID
+        WHERE U.FullName = @FullName
+          AND A.AttendanceDate BETWEEN @StartDate AND @EndDate
+        ORDER BY A.AttendanceDate";
+
+			var parameters = new[]
+			{
+		new SqlParameter("@FullName", fullName),
+		new SqlParameter("@StartDate", startDate),
+		new SqlParameter("@EndDate", endDate)
+	};
+
+			return DBHelper.ExecuteQuery(sql, parameters);
+		}
+
 
 
 	}

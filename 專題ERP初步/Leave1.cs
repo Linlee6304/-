@@ -74,7 +74,7 @@ namespace 專題ERP初步
 
 		private void pictureBox1_Click(object sender, EventArgs e)//預覽圖片顯示於此
 		{
-			
+
 		}
 
 		private void btutopictureBox1_Click(object sender, EventArgs e)//上傳圖片紐
@@ -126,11 +126,25 @@ namespace 專題ERP初步
 				string? reason = string.IsNullOrWhiteSpace(textBox1.Text) ? null : textBox1.Text;
 
 				// 5. 是否為半天（單選按鈕判斷）
-				bool isHalfDay = radioLeave2.Checked;
+				if (radioLeave1.Checked) // 全天
+				{
+					isHalfDay = false;
+					IsAfternoon = false;
+				}
+				else if (radioLeave2.Checked) // 半天（上午）
+				{
+					isHalfDay = true;
+					IsAfternoon = false;
+				}
+				else if (radioLeave3.Checked) // 半天（下午）
+				{
+					isHalfDay = true;
+					IsAfternoon = true;
+				}
 
 				// 6. 呼叫 Service 寫入
 				var leaveService = new LeaveApplicationService();
-				int applicationId = leaveService.InsertAndReturnApplicationId(userId, startDate, endDate, leaveTypeName, reason, isHalfDay);
+				int applicationId = leaveService.InsertAndReturnApplicationId(userId, startDate, endDate, leaveTypeName, reason, isHalfDay, IsAfternoon);
 
 				if (uploadedImageData != null)
 				{
@@ -176,6 +190,9 @@ namespace 專題ERP初步
 		}
 
 		private bool isHalfDay = false; // 預設為全天
+
+		private bool IsAfternoon = false;//預設為上半天請假
+
 		private void radioLeave2_CheckedChanged(object sender, EventArgs e)//半天紐
 		{
 			if (radioLeave2.Checked)
@@ -186,6 +203,16 @@ namespace 專題ERP初步
 		{
 			if (radioLeave1.Checked)
 				isHalfDay = false;
+		}
+
+		private void radioLeave3_CheckedChanged(object sender, EventArgs e)//半天紐+下午紐
+		{
+			if (radioLeave3.Checked) 
+			{
+				isHalfDay = true;
+				IsAfternoon = true;
+			}
+				
 		}
 	}
 }

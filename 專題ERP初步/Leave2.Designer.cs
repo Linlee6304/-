@@ -35,9 +35,21 @@
 			SelectBtu = new Button();
 			label2 = new Label();
 			CBReviewStatus = new ComboBox();
+			radioLeavel3 = new RadioButton();
+			btu刪除 = new Button();
+			label6 = new Label();
+			comboBox1 = new ComboBox();
+			btu執行 = new Button();
+			dataGridView2 = new DataGridView();
+			radioLeavel2 = new RadioButton();
+			radioLeavel1 = new RadioButton();
+			label5 = new Label();
+			label4 = new Label();
+			Enddate = new DateTimePicker();
+			Startdate = new DateTimePicker();
 			textBox1 = new TextBox();
 			label3 = new Label();
-			button2 = new Button();
+			btu檢查 = new Button();
 			label1 = new Label();
 			CBFullName = new ComboBox();
 			menuStrip1.SuspendLayout();
@@ -46,6 +58,7 @@
 			splitContainer1.Panel2.SuspendLayout();
 			splitContainer1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+			((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
 			SuspendLayout();
 			// 
 			// menuStrip1
@@ -54,7 +67,7 @@
 			menuStrip1.Items.AddRange(new ToolStripItem[] { 返回首頁ToolStripMenuItem });
 			menuStrip1.Location = new Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
-			menuStrip1.Size = new Size(1312, 27);
+			menuStrip1.Size = new Size(1150, 27);
 			menuStrip1.TabIndex = 1;
 			menuStrip1.Text = "menuStrip1";
 			// 
@@ -82,13 +95,25 @@
 			// 
 			// splitContainer1.Panel2
 			// 
+			splitContainer1.Panel2.Controls.Add(radioLeavel3);
+			splitContainer1.Panel2.Controls.Add(btu刪除);
+			splitContainer1.Panel2.Controls.Add(label6);
+			splitContainer1.Panel2.Controls.Add(comboBox1);
+			splitContainer1.Panel2.Controls.Add(btu執行);
+			splitContainer1.Panel2.Controls.Add(dataGridView2);
+			splitContainer1.Panel2.Controls.Add(radioLeavel2);
+			splitContainer1.Panel2.Controls.Add(radioLeavel1);
+			splitContainer1.Panel2.Controls.Add(label5);
+			splitContainer1.Panel2.Controls.Add(label4);
+			splitContainer1.Panel2.Controls.Add(Enddate);
+			splitContainer1.Panel2.Controls.Add(Startdate);
 			splitContainer1.Panel2.Controls.Add(textBox1);
 			splitContainer1.Panel2.Controls.Add(label3);
-			splitContainer1.Panel2.Controls.Add(button2);
+			splitContainer1.Panel2.Controls.Add(btu檢查);
 			splitContainer1.Panel2.Controls.Add(label1);
 			splitContainer1.Panel2.Controls.Add(CBFullName);
 			splitContainer1.Panel2.DragDrop += splitContainer1_Panel2_DragDrop;
-			splitContainer1.Size = new Size(1312, 578);
+			splitContainer1.Size = new Size(1150, 578);
 			splitContainer1.SplitterDistance = 285;
 			splitContainer1.TabIndex = 11;
 			// 
@@ -97,8 +122,9 @@
 			dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			dataGridView1.Location = new Point(169, 0);
 			dataGridView1.Name = "dataGridView1";
+			dataGridView1.ReadOnly = true;
 			dataGridView1.RowHeadersWidth = 51;
-			dataGridView1.Size = new Size(1143, 282);
+			dataGridView1.Size = new Size(979, 282);
 			dataGridView1.TabIndex = 17;
 			// 
 			// SelectBtu
@@ -130,35 +156,155 @@
 			CBReviewStatus.TabIndex = 12;
 			CBReviewStatus.SelectedIndexChanged += CBReviewStatus_SelectedIndexChanged_1;
 			// 
+			// radioLeavel3
+			// 
+			radioLeavel3.AutoSize = true;
+			radioLeavel3.Location = new Point(169, 157);
+			radioLeavel3.Name = "radioLeavel3";
+			radioLeavel3.Size = new Size(90, 23);
+			radioLeavel3.TabIndex = 30;
+			radioLeavel3.Text = "半天下午";
+			radioLeavel3.UseVisualStyleBackColor = true;
+			radioLeavel3.CheckedChanged += radioLeavel3_CheckedChanged;
+			// 
+			// btu刪除
+			// 
+			btu刪除.Location = new Point(184, 248);
+			btu刪除.Name = "btu刪除";
+			btu刪除.Size = new Size(94, 29);
+			btu刪除.TabIndex = 29;
+			btu刪除.Text = "刪除";
+			btu刪除.UseVisualStyleBackColor = true;
+			// 
+			// label6
+			// 
+			label6.AutoSize = true;
+			label6.Location = new Point(50, 136);
+			label6.Name = "label6";
+			label6.Size = new Size(69, 19);
+			label6.TabIndex = 28;
+			label6.Text = "審核狀況";
+			// 
+			// comboBox1
+			// 
+			comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+			comboBox1.FormattingEnabled = true;
+			comboBox1.Location = new Point(9, 158);
+			comboBox1.Name = "comboBox1";
+			comboBox1.Size = new Size(151, 27);
+			comboBox1.TabIndex = 27;
+			comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+			// 
+			// btu執行
+			// 
+			btu執行.Location = new Point(105, 195);
+			btu執行.Name = "btu執行";
+			btu執行.Size = new Size(94, 29);
+			btu執行.TabIndex = 26;
+			btu執行.Text = "執行";
+			btu執行.UseVisualStyleBackColor = true;
+			btu執行.Click += btu執行_Click;
+			// 
+			// dataGridView2
+			// 
+			dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridView2.Location = new Point(500, 3);
+			dataGridView2.Name = "dataGridView2";
+			dataGridView2.ReadOnly = true;
+			dataGridView2.RowHeadersWidth = 51;
+			dataGridView2.Size = new Size(648, 286);
+			dataGridView2.TabIndex = 18;
+			dataGridView2.CellContentClick += dataGridView2_CellContentClick;
+			// 
+			// radioLeavel2
+			// 
+			radioLeavel2.AutoSize = true;
+			radioLeavel2.Location = new Point(169, 125);
+			radioLeavel2.Name = "radioLeavel2";
+			radioLeavel2.Size = new Size(90, 23);
+			radioLeavel2.TabIndex = 25;
+			radioLeavel2.Text = "半天上午";
+			radioLeavel2.UseVisualStyleBackColor = true;
+			radioLeavel2.CheckedChanged += radioLeavel2_CheckedChanged;
+			// 
+			// radioLeavel1
+			// 
+			radioLeavel1.AutoSize = true;
+			radioLeavel1.Checked = true;
+			radioLeavel1.Location = new Point(169, 93);
+			radioLeavel1.Name = "radioLeavel1";
+			radioLeavel1.Size = new Size(60, 23);
+			radioLeavel1.TabIndex = 24;
+			radioLeavel1.TabStop = true;
+			radioLeavel1.Text = "全天";
+			radioLeavel1.UseVisualStyleBackColor = true;
+			radioLeavel1.CheckedChanged += radioLeavel1_CheckedChanged;
+			// 
+			// label5
+			// 
+			label5.AutoSize = true;
+			label5.Location = new Point(359, 129);
+			label5.Name = "label5";
+			label5.Size = new Size(54, 19);
+			label5.TabIndex = 23;
+			label5.Text = "結束日";
+			// 
+			// label4
+			// 
+			label4.AutoSize = true;
+			label4.Location = new Point(359, 67);
+			label4.Name = "label4";
+			label4.Size = new Size(54, 19);
+			label4.TabIndex = 22;
+			label4.Text = "起始日";
+			// 
+			// Enddate
+			// 
+			Enddate.Location = new Point(302, 149);
+			Enddate.Name = "Enddate";
+			Enddate.Size = new Size(169, 27);
+			Enddate.TabIndex = 21;
+			Enddate.ValueChanged += Enddate_ValueChanged;
+			// 
+			// Startdate
+			// 
+			Startdate.Location = new Point(302, 89);
+			Startdate.Name = "Startdate";
+			Startdate.Size = new Size(169, 27);
+			Startdate.TabIndex = 20;
+			Startdate.ValueChanged += Startdate_ValueChanged;
+			// 
 			// textBox1
 			// 
-			textBox1.Location = new Point(38, 141);
+			textBox1.Location = new Point(22, 103);
 			textBox1.Name = "textBox1";
 			textBox1.Size = new Size(125, 27);
 			textBox1.TabIndex = 19;
+			textBox1.TextChanged += textBox1_TextChanged;
 			// 
 			// label3
 			// 
 			label3.AutoSize = true;
-			label3.Location = new Point(66, 119);
+			label3.Location = new Point(50, 81);
 			label3.Name = "label3";
 			label3.Size = new Size(69, 19);
 			label3.TabIndex = 18;
 			label3.Text = "申請編號";
 			// 
-			// button2
+			// btu檢查
 			// 
-			button2.Location = new Point(53, 193);
-			button2.Name = "button2";
-			button2.Size = new Size(94, 29);
-			button2.TabIndex = 16;
-			button2.Text = "button2";
-			button2.UseVisualStyleBackColor = true;
+			btu檢查.Location = new Point(336, 195);
+			btu檢查.Name = "btu檢查";
+			btu檢查.Size = new Size(94, 29);
+			btu檢查.TabIndex = 16;
+			btu檢查.Text = "檢查";
+			btu檢查.UseVisualStyleBackColor = true;
+			btu檢查.Click += btu檢查_Click;
 			// 
 			// label1
 			// 
 			label1.AutoSize = true;
-			label1.Location = new Point(77, 46);
+			label1.Location = new Point(204, 17);
 			label1.Name = "label1";
 			label1.Size = new Size(54, 19);
 			label1.TabIndex = 13;
@@ -168,16 +314,17 @@
 			// 
 			CBFullName.DropDownStyle = ComboBoxStyle.DropDownList;
 			CBFullName.FormattingEnabled = true;
-			CBFullName.Location = new Point(29, 79);
+			CBFullName.Location = new Point(156, 50);
 			CBFullName.Name = "CBFullName";
 			CBFullName.Size = new Size(151, 27);
 			CBFullName.TabIndex = 11;
+			CBFullName.SelectedIndexChanged += CBFullName_SelectedIndexChanged_1;
 			// 
 			// Leave2
 			// 
 			AutoScaleDimensions = new SizeF(9F, 19F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(1312, 605);
+			ClientSize = new Size(1150, 605);
 			Controls.Add(splitContainer1);
 			Controls.Add(menuStrip1);
 			Name = "Leave2";
@@ -192,6 +339,7 @@
 			((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
 			splitContainer1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+			((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -207,8 +355,20 @@
 		private ComboBox CBReviewStatus;
 		private TextBox textBox1;
 		private Label label3;
-		private Button button2;
+		private Button btu檢查;
 		private Label label1;
 		private ComboBox CBFullName;
+		private Label label5;
+		private Label label4;
+		private DateTimePicker Enddate;
+		private DateTimePicker Startdate;
+		private RadioButton radioLeavel1;
+		private RadioButton radioLeavel2;
+		private Button btu執行;
+		private DataGridView dataGridView2;
+		private Button btu刪除;
+		private Label label6;
+		private ComboBox comboBox1;
+		private RadioButton radioLeavel3;
 	}
 }

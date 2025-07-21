@@ -16,6 +16,12 @@ namespace 專題ERP初步.DTO
 		public string? Reason { get; set; }//請假原因
 		public string Status { get; set; }//核可進度
 		public DateTime CreatedTime { get; set; }//表單建立時間
-		public bool IsHalfDay { get; set; } //半天假標記
+		public bool? IsHalfDay { get; set; } //半天假標記
+
+		public bool? IsAfternoon { get; set; }//是否為下午
+
+		#region JOIN用到
+		public string? LeaveTypeName { get; set; }
+		#endregion
 	}
 }

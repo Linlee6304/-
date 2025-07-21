@@ -10,7 +10,7 @@ namespace 專題ERP初步.DAO
 {
 	public class LeaveProofImageDao
 	{
-		public void InsertProofImage(LeaveProofImageDto dto)
+		public void InsertProofImage(LeaveProofImageDto dto)//上傳請假證明圖片
 		{
 
 			string sql = @"INSERT INTO LeaveProofImage(ApplicationID, ImagePath, FileName, UploadedTime)

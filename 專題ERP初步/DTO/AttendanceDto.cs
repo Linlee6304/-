@@ -17,5 +17,6 @@ namespace 專題ERP初步.DTO
 
 		public string Status { get; set; }
 		public string Remarks { get; set; }
+		public bool? sHalfDay { get; set; }
 	}
 }
