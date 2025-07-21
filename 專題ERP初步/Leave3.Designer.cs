@@ -149,7 +149,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(9F, 19F);
 			AutoScaleMode = AutoScaleMode.Font;
-			BackgroundImage = Properties.Resources.ChatGPT_Image_2025年7月21日_下午02_55_54;
+			BackgroundImage = Properties.Resources.ERP_resized_50_percent;
 			ClientSize = new Size(838, 445);
 			Controls.Add(label3);
 			Controls.Add(comboBoxAttendance);

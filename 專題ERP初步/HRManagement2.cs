@@ -52,10 +52,12 @@ namespace 專題ERP初步
 			var Userservice = new UserAccountService();
 			comboBox1.DataSource = Userservice.GetAllFullname();
 			comboBox1.DisplayMember = "FullName"; // 顯示欄位
-			comboBox1.ValueMember = "UserID";     // 實際值欄位（如有需要）
+			comboBox1.ValueMember = "UserID";     // 實際值欄位
+
 			comboBox3.DataSource = Departmentservice.GetAllDepartments();
 			comboBox3.DisplayMember = "DepartmentName"; // 顯示欄位
 			comboBox3.ValueMember = "DepartmentID";     // 實際值欄位
+
 			comboBox2.Items.Add("Admin");
 			comboBox2.Items.Add("HR");
 			comboBox2.Items.Add("User");

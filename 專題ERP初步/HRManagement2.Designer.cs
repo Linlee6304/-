@@ -76,7 +76,8 @@
 			// 
 			// splitContainer1.Panel1
 			// 
-			splitContainer1.Panel1.BackgroundImage = Properties.Resources.ChatGPT_Image_2025年7月21日_下午02_55_54;
+			splitContainer1.Panel1.BackColor = Color.Transparent;
+			splitContainer1.Panel1.BackgroundImage = Properties.Resources.ERP_resized_50_percent;
 			splitContainer1.Panel1.Controls.Add(label4);
 			splitContainer1.Panel1.Controls.Add(textBox1);
 			splitContainer1.Panel1.Controls.Add(label3);
@@ -211,6 +212,7 @@
 			AutoScaleDimensions = new SizeF(9F, 19F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = SystemColors.MenuHighlight;
+			BackgroundImage = Properties.Resources.ERP_resized_25_percent;
 			ClientSize = new Size(1096, 480);
 			Controls.Add(splitContainer1);
 			Controls.Add(menuStrip1);

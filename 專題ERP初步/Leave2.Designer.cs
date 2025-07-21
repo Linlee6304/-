@@ -86,7 +86,7 @@
 			// 
 			// splitContainer1.Panel1
 			// 
-			splitContainer1.Panel1.BackgroundImage = Properties.Resources.ChatGPT_Image_2025年7月21日_下午02_55_54;
+			splitContainer1.Panel1.BackgroundImage = Properties.Resources.ERP_resized_50_percent;
 			splitContainer1.Panel1.Controls.Add(dataGridView1);
 			splitContainer1.Panel1.Controls.Add(SelectBtu);
 			splitContainer1.Panel1.Controls.Add(label2);
@@ -95,7 +95,7 @@
 			// 
 			// splitContainer1.Panel2
 			// 
-			splitContainer1.Panel2.BackgroundImage = Properties.Resources.ChatGPT_Image_2025年7月21日_下午02_55_54;
+			splitContainer1.Panel2.BackgroundImage = Properties.Resources.ERP_resized_50_percent;
 			splitContainer1.Panel2.Controls.Add(radioLeavel3);
 			splitContainer1.Panel2.Controls.Add(label6);
 			splitContainer1.Panel2.Controls.Add(comboBox1);
@@ -319,7 +319,6 @@
 			// 
 			AutoScaleDimensions = new SizeF(9F, 19F);
 			AutoScaleMode = AutoScaleMode.Font;
-			BackgroundImage = Properties.Resources.ChatGPT_Image_2025年7月21日_下午02_55_54;
 			ClientSize = new Size(1119, 616);
 			Controls.Add(splitContainer1);
 			Controls.Add(menuStrip1);

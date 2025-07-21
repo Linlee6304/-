@@ -121,4 +121,10 @@
   <data name="ChatGPT Image 2025年7月21日 下午02_55_54" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ChatGPT Image 2025年7月21日 下午02_55_54.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ERP_resized_25_percent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ERP_resized_25_percent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ERP_resized_50_percent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ERP_resized_50_percent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

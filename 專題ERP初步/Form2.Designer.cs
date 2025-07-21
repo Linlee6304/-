@@ -70,7 +70,7 @@
 			menuStrip1.Items.AddRange(new ToolStripItem[] { 登出ToolStripMenuItem, 工作排程ToolStripMenuItem, 請假申請ToolStripMenuItem, 資金申請ToolStripMenuItem, 庫存狀況ToolStripMenuItem, 人事ToolStripMenuItem, 管理ToolStripMenuItem });
 			menuStrip1.Location = new Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
-			menuStrip1.Size = new Size(611, 28);
+			menuStrip1.Size = new Size(611, 27);
 			menuStrip1.TabIndex = 1;
 			menuStrip1.Text = "menuStrip1";
 			menuStrip1.ItemClicked += menuStrip1_ItemClicked;
@@ -78,14 +78,14 @@
 			// 登出ToolStripMenuItem
 			// 
 			登出ToolStripMenuItem.Name = "登出ToolStripMenuItem";
-			登出ToolStripMenuItem.Size = new Size(53, 24);
+			登出ToolStripMenuItem.Size = new Size(53, 23);
 			登出ToolStripMenuItem.Text = "登出";
 			登出ToolStripMenuItem.Click += 登出ToolStripMenuItem_Click;
 			// 
 			// 工作排程ToolStripMenuItem
 			// 
 			工作排程ToolStripMenuItem.Name = "工作排程ToolStripMenuItem";
-			工作排程ToolStripMenuItem.Size = new Size(83, 24);
+			工作排程ToolStripMenuItem.Size = new Size(83, 23);
 			工作排程ToolStripMenuItem.Text = "工作排程";
 			工作排程ToolStripMenuItem.Click += 工作排程ToolStripMenuItem_Click;
 			// 
@@ -93,7 +93,7 @@
 			// 
 			請假申請ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 請假申請ToolStripMenuItem1, 請假核可ToolStripMenuItem, 個人出勤紀錄ToolStripMenuItem });
 			請假申請ToolStripMenuItem.Name = "請假申請ToolStripMenuItem";
-			請假申請ToolStripMenuItem.Size = new Size(83, 24);
+			請假申請ToolStripMenuItem.Size = new Size(83, 23);
 			請假申請ToolStripMenuItem.Text = "請假申請";
 			// 
 			// 請假申請ToolStripMenuItem1
@@ -121,7 +121,7 @@
 			// 
 			資金申請ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 一般請款ToolStripMenuItem, 請款紀錄ToolStripMenuItem });
 			資金申請ToolStripMenuItem.Name = "資金申請ToolStripMenuItem";
-			資金申請ToolStripMenuItem.Size = new Size(83, 24);
+			資金申請ToolStripMenuItem.Size = new Size(83, 23);
 			資金申請ToolStripMenuItem.Text = "資金申請";
 			// 
 			// 一般請款ToolStripMenuItem
@@ -142,7 +142,7 @@
 			// 
 			庫存狀況ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 原物料庫存ToolStripMenuItem, 成品庫存ToolStripMenuItem });
 			庫存狀況ToolStripMenuItem.Name = "庫存狀況ToolStripMenuItem";
-			庫存狀況ToolStripMenuItem.Size = new Size(83, 24);
+			庫存狀況ToolStripMenuItem.Size = new Size(83, 23);
 			庫存狀況ToolStripMenuItem.Text = "庫存狀況";
 			// 
 			// 原物料庫存ToolStripMenuItem
@@ -163,7 +163,7 @@
 			// 
 			人事ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 個人資料資料ToolStripMenuItem, 出勤紀錄ToolStripMenuItem });
 			人事ToolStripMenuItem.Name = "人事ToolStripMenuItem";
-			人事ToolStripMenuItem.Size = new Size(53, 24);
+			人事ToolStripMenuItem.Size = new Size(53, 23);
 			人事ToolStripMenuItem.Text = "人事";
 			// 
 			// 個人資料資料ToolStripMenuItem
@@ -184,7 +184,7 @@
 			// 
 			管理ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 客戶ToolStripMenuItem, 員工ToolStripMenuItem, 帳號管理ToolStripMenuItem });
 			管理ToolStripMenuItem.Name = "管理ToolStripMenuItem";
-			管理ToolStripMenuItem.Size = new Size(53, 24);
+			管理ToolStripMenuItem.Size = new Size(53, 23);
 			管理ToolStripMenuItem.Text = "管理";
 			管理ToolStripMenuItem.Click += 管理ToolStripMenuItem_Click;
 			// 
@@ -192,7 +192,7 @@
 			// 
 			客戶ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 客戶資料ToolStripMenuItem, 客戶訂單ToolStripMenuItem });
 			客戶ToolStripMenuItem.Name = "客戶ToolStripMenuItem";
-			客戶ToolStripMenuItem.Size = new Size(224, 26);
+			客戶ToolStripMenuItem.Size = new Size(152, 26);
 			客戶ToolStripMenuItem.Text = "客戶";
 			// 
 			// 客戶資料ToolStripMenuItem
@@ -213,7 +213,7 @@
 			// 
 			員工ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 員工資料ToolStripMenuItem1, 員工績效ToolStripMenuItem, 員工進度ToolStripMenuItem });
 			員工ToolStripMenuItem.Name = "員工ToolStripMenuItem";
-			員工ToolStripMenuItem.Size = new Size(224, 26);
+			員工ToolStripMenuItem.Size = new Size(152, 26);
 			員工ToolStripMenuItem.Text = "員工";
 			// 
 			// 員工資料ToolStripMenuItem1
@@ -240,7 +240,7 @@
 			// 帳號管理ToolStripMenuItem
 			// 
 			帳號管理ToolStripMenuItem.Name = "帳號管理ToolStripMenuItem";
-			帳號管理ToolStripMenuItem.Size = new Size(224, 26);
+			帳號管理ToolStripMenuItem.Size = new Size(152, 26);
 			帳號管理ToolStripMenuItem.Text = "帳號管理";
 			帳號管理ToolStripMenuItem.Click += 帳號管理ToolStripMenuItem_Click;
 			// 
@@ -321,7 +321,7 @@
 			AutoScaleDimensions = new SizeF(9F, 19F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.SeaShell;
-			BackgroundImage = Properties.Resources.ChatGPT_Image_2025年7月21日_下午02_55_54;
+			BackgroundImage = Properties.Resources.ERP_resized_50_percent;
 			ClientSize = new Size(611, 450);
 			Controls.Add(dataGridView1);
 			Controls.Add(button3);
