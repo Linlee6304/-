@@ -108,7 +108,7 @@ namespace 專題ERP初步.DAO
 					new SqlParameter("@UserID", userId)
 			};
 			DBHelper.ExecuteQuery(sql,parameters);
-			
+
 		}
 		public AttendanceDto? GetTodayAttendance(int userId)
 		{
@@ -272,6 +272,28 @@ namespace 專題ERP初步.DAO
 		new SqlParameter("@StartDate", startDate),
 		new SqlParameter("@EndDate", endDate)
 	};
+
+			return DBHelper.ExecuteQuery(sql, parameters);
+		}
+
+		public DataTable GetAttendanceByFullNameAndDateRangeAndStatus(string fullName, DateTime startDate, DateTime endDate,string Status)//根據起始日終結日查詢此人出勤狀況
+		{
+			string sql = @"
+        SELECT A.AttendanceDate, A.ClockInTime, A.ClockOutTime, A.Status, A.sHalfDay
+        FROM Attendance A
+        JOIN UserAccount U ON A.UserID = U.UserID
+        WHERE U.FullName = @FullName
+		AND A.Status = @Status
+         AND A.AttendanceDate BETWEEN @StartDate AND @EndDate
+        ORDER BY A.AttendanceDate";
+
+			var parameters = new[]
+			{
+		new SqlParameter("@FullName", fullName),
+		new SqlParameter("@StartDate", startDate),
+		new SqlParameter("@EndDate", endDate),
+		new SqlParameter("@Status", Status)
+			};
 
 			return DBHelper.ExecuteQuery(sql, parameters);
 		}

@@ -126,5 +126,9 @@ namespace 專題ERP初步.Service
 		{
 			return _dao.GetAttendanceByFullNameAndDateRange(fullName, startDate, endDate);
 		}
+		public DataTable GetAttendanceByFullNameAndDateRangeAndStatus(string fullName, DateTime startDate, DateTime endDate, string Status)
+		{
+			return _dao.GetAttendanceByFullNameAndDateRangeAndStatus(fullName, startDate, endDate, Status);
+		}
 	}
 }

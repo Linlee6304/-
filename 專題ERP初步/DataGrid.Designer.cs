@@ -97,6 +97,7 @@
 			// 
 			// 至今派發工作總攬
 			// 
+			至今派發工作總攬.BackgroundColor = Color.Beige;
 			至今派發工作總攬.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			至今派發工作總攬.Location = new Point(316, 35);
 			至今派發工作總攬.Name = "至今派發工作總攬";
@@ -138,6 +139,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(9F, 19F);
 			AutoScaleMode = AutoScaleMode.Font;
+			BackgroundImage = Properties.Resources.ChatGPT_Image_2025年7月21日_下午02_55_54;
 			ClientSize = new Size(800, 450);
 			Controls.Add(button1);
 			Controls.Add(label3);

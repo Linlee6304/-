@@ -48,6 +48,7 @@
 			// 
 			// menuStrip1
 			// 
+			menuStrip1.BackColor = SystemColors.ActiveCaption;
 			menuStrip1.ImageScalingSize = new Size(20, 20);
 			menuStrip1.Items.AddRange(new ToolStripItem[] { 返回登入ToolStripMenuItem });
 			menuStrip1.Location = new Point(0, 0);
@@ -179,6 +180,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(9F, 19F);
 			AutoScaleMode = AutoScaleMode.Font;
+			BackgroundImage = Properties.Resources.ChatGPT_Image_2025年7月21日_下午02_55_54;
 			ClientSize = new Size(398, 297);
 			Controls.Add(button1);
 			Controls.Add(Phone);

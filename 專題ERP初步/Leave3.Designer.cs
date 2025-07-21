@@ -49,7 +49,7 @@
 			menuStrip1.Items.AddRange(new ToolStripItem[] { 返回首頁ToolStripMenuItem });
 			menuStrip1.Location = new Point(0, 0);
 			menuStrip1.Name = "menuStrip1";
-			menuStrip1.Size = new Size(800, 27);
+			menuStrip1.Size = new Size(838, 27);
 			menuStrip1.TabIndex = 1;
 			menuStrip1.Text = "menuStrip1";
 			menuStrip1.ItemClicked += menuStrip1_ItemClicked;
@@ -57,18 +57,22 @@
 			// 返回首頁ToolStripMenuItem
 			// 
 			返回首頁ToolStripMenuItem.Name = "返回首頁ToolStripMenuItem";
-			返回首頁ToolStripMenuItem.Size = new Size(83, 24);
+			返回首頁ToolStripMenuItem.Size = new Size(83, 23);
 			返回首頁ToolStripMenuItem.Text = "返回首頁";
 			返回首頁ToolStripMenuItem.Click += 返回首頁ToolStripMenuItem_Click;
 			// 
 			// dataGridView1
 			// 
+			dataGridView1.AllowUserToAddRows = false;
+			dataGridView1.AllowUserToDeleteRows = false;
 			dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			dataGridView1.Location = new Point(199, 45);
 			dataGridView1.Name = "dataGridView1";
+			dataGridView1.ReadOnly = true;
 			dataGridView1.RowHeadersWidth = 51;
-			dataGridView1.Size = new Size(574, 325);
+			dataGridView1.Size = new Size(627, 338);
 			dataGridView1.TabIndex = 2;
+			dataGridView1.CellContentClick += dataGridView1_CellContentClick;
 			// 
 			// dateTimeStardate
 			// 
@@ -76,6 +80,7 @@
 			dateTimeStardate.Name = "dateTimeStardate";
 			dateTimeStardate.Size = new Size(151, 27);
 			dateTimeStardate.TabIndex = 3;
+			dateTimeStardate.ValueChanged += dateTimeStardate_ValueChanged;
 			// 
 			// dateTimeEnddate
 			// 
@@ -83,6 +88,7 @@
 			dateTimeEnddate.Name = "dateTimeEnddate";
 			dateTimeEnddate.Size = new Size(151, 27);
 			dateTimeEnddate.TabIndex = 4;
+			dateTimeEnddate.ValueChanged += dateTimeEnddate_ValueChanged;
 			// 
 			// label1
 			// 
@@ -104,12 +110,13 @@
 			// 
 			// button1
 			// 
-			button1.Location = new Point(427, 389);
+			button1.Location = new Point(464, 404);
 			button1.Name = "button1";
 			button1.Size = new Size(94, 29);
 			button1.TabIndex = 7;
 			button1.Text = "查詢";
 			button1.UseVisualStyleBackColor = true;
+			button1.Click += button1_Click;
 			// 
 			// comboBoxLeaveType
 			// 
@@ -118,6 +125,7 @@
 			comboBoxLeaveType.Name = "comboBoxLeaveType";
 			comboBoxLeaveType.Size = new Size(151, 27);
 			comboBoxLeaveType.TabIndex = 8;
+			comboBoxLeaveType.SelectedIndexChanged += comboBoxLeaveType_SelectedIndexChanged;
 			// 
 			// comboBoxAttendance
 			// 
@@ -126,6 +134,7 @@
 			comboBoxAttendance.Name = "comboBoxAttendance";
 			comboBoxAttendance.Size = new Size(151, 27);
 			comboBoxAttendance.TabIndex = 9;
+			comboBoxAttendance.SelectedIndexChanged += comboBoxAttendance_SelectedIndexChanged;
 			// 
 			// label3
 			// 
@@ -140,7 +149,8 @@
 			// 
 			AutoScaleDimensions = new SizeF(9F, 19F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(800, 450);
+			BackgroundImage = Properties.Resources.ChatGPT_Image_2025年7月21日_下午02_55_54;
+			ClientSize = new Size(838, 445);
 			Controls.Add(label3);
 			Controls.Add(comboBoxAttendance);
 			Controls.Add(comboBoxLeaveType);

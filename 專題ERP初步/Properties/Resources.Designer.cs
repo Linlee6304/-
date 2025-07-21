@@ -59,5 +59,15 @@ namespace 專題ERP初步.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap ChatGPT_Image_2025年7月21日_下午02_55_54 {
+            get {
+                object obj = ResourceManager.GetObject("ChatGPT Image 2025年7月21日 下午02_55_54", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

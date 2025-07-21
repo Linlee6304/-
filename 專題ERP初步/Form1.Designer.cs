@@ -38,9 +38,9 @@
 			// 
 			// login
 			// 
-			login.Location = new Point(37, 176);
+			login.Location = new Point(127, 235);
 			login.Name = "login";
-			login.Size = new Size(123, 29);
+			login.Size = new Size(165, 29);
 			login.TabIndex = 0;
 			login.Text = "登入";
 			login.UseVisualStyleBackColor = true;
@@ -48,24 +48,24 @@
 			// 
 			// UserName
 			// 
-			UserName.Location = new Point(37, 53);
+			UserName.Location = new Point(127, 112);
 			UserName.Name = "UserName";
-			UserName.Size = new Size(123, 27);
+			UserName.Size = new Size(165, 27);
 			UserName.TabIndex = 1;
 			UserName.TextChanged += UserName_TextChanged;
 			// 
 			// password
 			// 
-			password.Location = new Point(37, 116);
+			password.Location = new Point(127, 175);
 			password.Name = "password";
-			password.Size = new Size(123, 27);
+			password.Size = new Size(165, 27);
 			password.TabIndex = 2;
 			password.TextChanged += password_TextChanged;
 			// 
 			// label1
 			// 
 			label1.AutoSize = true;
-			label1.Location = new Point(37, 31);
+			label1.Location = new Point(82, 120);
 			label1.Name = "label1";
 			label1.Size = new Size(39, 19);
 			label1.TabIndex = 3;
@@ -74,7 +74,7 @@
 			// label2
 			// 
 			label2.AutoSize = true;
-			label2.Location = new Point(37, 94);
+			label2.Location = new Point(82, 178);
 			label2.Name = "label2";
 			label2.Size = new Size(39, 19);
 			label2.TabIndex = 4;
@@ -82,9 +82,9 @@
 			// 
 			// UserAccountManagement
 			// 
-			UserAccountManagement.Location = new Point(37, 211);
+			UserAccountManagement.Location = new Point(127, 270);
 			UserAccountManagement.Name = "UserAccountManagement";
-			UserAccountManagement.Size = new Size(123, 29);
+			UserAccountManagement.Size = new Size(165, 29);
 			UserAccountManagement.TabIndex = 5;
 			UserAccountManagement.Text = "創建帳號";
 			UserAccountManagement.UseVisualStyleBackColor = true;
@@ -94,7 +94,8 @@
 			// 
 			AutoScaleDimensions = new SizeF(9F, 19F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(203, 271);
+			BackgroundImage = Properties.Resources.ChatGPT_Image_2025年7月21日_下午02_55_54;
+			ClientSize = new Size(440, 409);
 			Controls.Add(UserAccountManagement);
 			Controls.Add(label2);
 			Controls.Add(label1);

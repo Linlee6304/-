@@ -21,5 +21,8 @@ namespace 專題ERP初步.Service
 		{
 			return _dao.GetAllDepartments();
 		}
+		public int GetDepartmentnameToDepartmentnameid(string departmentnameid)
+		{ return _dao.GetDepartmentnameToDepartmentnameid(departmentnameid); }
 	}
+	
 }

@@ -55,7 +55,14 @@ namespace 專題ERP初步.DAO
 			
 			return list;
 		}
-		
+		public int GetDepartmentnameToDepartmentnameid(string Departmentname) //依照輸入的departmentname取得id
+		{
+			var sql = @"select DepartmentID from Department where Departmentname = @Departmentname";
+			var param = new SqlParameter("@Departmentname", Departmentname);
+			object result = DBHelper.ExecuteScalar(sql, param);
+			return Convert.ToInt32(result);
+		}
+
 	}
 	
 }

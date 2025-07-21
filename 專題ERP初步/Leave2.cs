@@ -63,6 +63,10 @@ namespace 專題ERP初步
 				MessageBox.Show("載入失敗：" + ex.Message);
 			}
 			#endregion
+			dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+			dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+			dataGridView1.RowHeadersVisible = false;
+			dataGridView2.RowHeadersVisible = false;
 
 		}
 

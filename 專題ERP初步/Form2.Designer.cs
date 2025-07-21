@@ -99,21 +99,21 @@
 			// 請假申請ToolStripMenuItem1
 			// 
 			請假申請ToolStripMenuItem1.Name = "請假申請ToolStripMenuItem1";
-			請假申請ToolStripMenuItem1.Size = new Size(224, 26);
+			請假申請ToolStripMenuItem1.Size = new Size(182, 26);
 			請假申請ToolStripMenuItem1.Text = "請假申請";
 			請假申請ToolStripMenuItem1.Click += 請假申請ToolStripMenuItem1_Click;
 			// 
 			// 請假核可ToolStripMenuItem
 			// 
 			請假核可ToolStripMenuItem.Name = "請假核可ToolStripMenuItem";
-			請假核可ToolStripMenuItem.Size = new Size(224, 26);
+			請假核可ToolStripMenuItem.Size = new Size(182, 26);
 			請假核可ToolStripMenuItem.Text = "請假核可";
 			請假核可ToolStripMenuItem.Click += 請假記錄ToolStripMenuItem_Click;
 			// 
 			// 個人出勤紀錄ToolStripMenuItem
 			// 
 			個人出勤紀錄ToolStripMenuItem.Name = "個人出勤紀錄ToolStripMenuItem";
-			個人出勤紀錄ToolStripMenuItem.Size = new Size(224, 26);
+			個人出勤紀錄ToolStripMenuItem.Size = new Size(182, 26);
 			個人出勤紀錄ToolStripMenuItem.Text = "個人出勤紀錄";
 			個人出勤紀錄ToolStripMenuItem.Click += 個人出勤紀錄ToolStripMenuItem_Click;
 			// 
@@ -169,15 +169,15 @@
 			// 個人資料資料ToolStripMenuItem
 			// 
 			個人資料資料ToolStripMenuItem.Name = "個人資料資料ToolStripMenuItem";
-			個人資料資料ToolStripMenuItem.Size = new Size(152, 26);
+			個人資料資料ToolStripMenuItem.Size = new Size(257, 26);
 			個人資料資料ToolStripMenuItem.Text = "個人資料";
 			個人資料資料ToolStripMenuItem.Click += 個人資料資料ToolStripMenuItem_Click;
 			// 
 			// 出勤紀錄ToolStripMenuItem
 			// 
 			出勤紀錄ToolStripMenuItem.Name = "出勤紀錄ToolStripMenuItem";
-			出勤紀錄ToolStripMenuItem.Size = new Size(152, 26);
-			出勤紀錄ToolStripMenuItem.Text = "出勤紀錄";
+			出勤紀錄ToolStripMenuItem.Size = new Size(257, 26);
+			出勤紀錄ToolStripMenuItem.Text = "帳號權限管理與個人資料";
 			出勤紀錄ToolStripMenuItem.Click += 出勤紀錄ToolStripMenuItem_Click;
 			// 
 			// 管理ToolStripMenuItem
@@ -186,12 +186,13 @@
 			管理ToolStripMenuItem.Name = "管理ToolStripMenuItem";
 			管理ToolStripMenuItem.Size = new Size(53, 24);
 			管理ToolStripMenuItem.Text = "管理";
+			管理ToolStripMenuItem.Click += 管理ToolStripMenuItem_Click;
 			// 
 			// 客戶ToolStripMenuItem
 			// 
 			客戶ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 客戶資料ToolStripMenuItem, 客戶訂單ToolStripMenuItem });
 			客戶ToolStripMenuItem.Name = "客戶ToolStripMenuItem";
-			客戶ToolStripMenuItem.Size = new Size(152, 26);
+			客戶ToolStripMenuItem.Size = new Size(224, 26);
 			客戶ToolStripMenuItem.Text = "客戶";
 			// 
 			// 客戶資料ToolStripMenuItem
@@ -212,7 +213,7 @@
 			// 
 			員工ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 員工資料ToolStripMenuItem1, 員工績效ToolStripMenuItem, 員工進度ToolStripMenuItem });
 			員工ToolStripMenuItem.Name = "員工ToolStripMenuItem";
-			員工ToolStripMenuItem.Size = new Size(152, 26);
+			員工ToolStripMenuItem.Size = new Size(224, 26);
 			員工ToolStripMenuItem.Text = "員工";
 			// 
 			// 員工資料ToolStripMenuItem1
@@ -239,7 +240,7 @@
 			// 帳號管理ToolStripMenuItem
 			// 
 			帳號管理ToolStripMenuItem.Name = "帳號管理ToolStripMenuItem";
-			帳號管理ToolStripMenuItem.Size = new Size(152, 26);
+			帳號管理ToolStripMenuItem.Size = new Size(224, 26);
 			帳號管理ToolStripMenuItem.Text = "帳號管理";
 			帳號管理ToolStripMenuItem.Click += 帳號管理ToolStripMenuItem_Click;
 			// 
@@ -304,7 +305,9 @@
 			// 
 			dataGridView1.AllowUserToAddRows = false;
 			dataGridView1.AllowUserToDeleteRows = false;
+			dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
 			dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dataGridView1.GridColor = SystemColors.InactiveCaption;
 			dataGridView1.Location = new Point(23, 103);
 			dataGridView1.Name = "dataGridView1";
 			dataGridView1.ReadOnly = true;
@@ -317,6 +320,8 @@
 			// 
 			AutoScaleDimensions = new SizeF(9F, 19F);
 			AutoScaleMode = AutoScaleMode.Font;
+			BackColor = Color.SeaShell;
+			BackgroundImage = Properties.Resources.ChatGPT_Image_2025年7月21日_下午02_55_54;
 			ClientSize = new Size(611, 450);
 			Controls.Add(dataGridView1);
 			Controls.Add(button3);

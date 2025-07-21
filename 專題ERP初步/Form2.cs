@@ -37,7 +37,7 @@ namespace 專題ERP初步
 				if (dataGridView1.Columns.Contains("TaskDescription"))
 					dataGridView1.Columns["TaskDescription"].HeaderText = "工作內容";
 			}
-			catch (Exception ex){}
+			catch (Exception ex) { }
 		}
 		#endregion
 
@@ -104,12 +104,12 @@ namespace 專題ERP初步
 
 		private void 一般請款ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			MessageBox.Show("施工中");
 		}
 
 		private void 請款紀錄ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			MessageBox.Show("施工中");
 		}
 
 		private void 原物料庫存ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -124,12 +124,16 @@ namespace 專題ERP初步
 
 		private void 個人資料資料ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			HRManagement1 mainForm = new HRManagement1(this);
+			mainForm.Show();
+			this.Hide();
 		}
 
 		private void 出勤紀錄ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			HRManagement2 mainForm = new HRManagement2(this);
+			mainForm.Show();
+			this.Hide();
 		}
 
 		private void 客戶資料ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -142,17 +146,17 @@ namespace 專題ERP初步
 
 		}
 
-		private void 員工資料ToolStripMenuItem1_Click(object sender, EventArgs e)
+		private void 員工資料ToolStripMenuItem1_Click(object sender, EventArgs e)//廢案
 		{
 
 		}
 
-		private void 員工績效ToolStripMenuItem_Click(object sender, EventArgs e)
+		private void 員工績效ToolStripMenuItem_Click(object sender, EventArgs e)//廢案
 		{
 
 		}
 
-		private void 員工進度ToolStripMenuItem_Click(object sender, EventArgs e)
+		private void 員工進度ToolStripMenuItem_Click(object sender, EventArgs e)//廢案
 		{
 
 		}
@@ -204,6 +208,11 @@ namespace 專題ERP初步
 			dataGridView1.ColumnHeadersVisible = false;
 			LoadSchedule();
 			#endregion
+
+
+			管理ToolStripMenuItem.Visible = false;
+
+
 		}//部門權限
 
 		private void Form2_FormClosed(object sender, FormClosedEventArgs e)
@@ -213,7 +222,7 @@ namespace 專題ERP初步
 
 		private void Form2_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			
+
 		}
 
 		private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -274,6 +283,16 @@ namespace 專題ERP初步
 			{
 				MessageBox.Show(ex.Message);
 			}
+		}
+
+		private void 個人資料ToolStripMenuItem_Click(object sender, EventArgs e)//廢棄
+		{
+
+		}
+
+		private void 管理ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 

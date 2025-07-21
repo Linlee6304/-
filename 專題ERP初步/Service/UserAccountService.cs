@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace 專題ERP初步.Service
 	public class UserAccountService
 	{
 		private readonly UserAccountDao _dao= new UserAccountDao();
-		public List<UserAccountDto> GetAllFullname()
+		public List<UserAccountDto> GetAllFullname()//讀取所有員工姓名
 		{
 			return _dao.GetFullName();
 		}
@@ -19,5 +20,14 @@ namespace 專題ERP初步.Service
 		{
 			return _dao.GetFullNameToUserid(FullName);
 		}
+		public DataTable GetUserAccountJoinDepartmentAndEmployee()
+		{
+			return _dao.GetUserAccountJoinDepartmentAndEmployee();
+		}
+		public void UpdateUserAccountRole(int? UserID, string Role)
+		{
+			_dao.UpdateUserAccountRole(UserID, Role);
+		}
 	}
+	
 }
