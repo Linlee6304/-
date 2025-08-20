@@ -11,11 +11,9 @@ namespace 專題ERP初步
 		public Class1() {
 			//test git
 			//test git2
+			//test git3
 		}
 	}
 }
 
-	internal class Class1
-	{
-
-	}
+	
