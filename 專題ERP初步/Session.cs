@@ -11,7 +11,5 @@ namespace 專題ERP初步
 		public static int UserId { get; set; }
 		public static string FullName { get; set; } = "";
 		public static string Role { get; set; } = "";
-
-
 	}
 }
